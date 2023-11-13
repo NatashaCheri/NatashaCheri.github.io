@@ -644,18 +644,57 @@ var datetimeStr = now.toLocaleString();
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({ "msg": screenshotDataUrl }),
+                        body: JSON.stringify({ "msg": base64Image }),
                     })
                     .then(response => response.json())
                     .then(data => {
-                        // Handle the response from the backend as needed
-                        alert(JSON.stringify(data));
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                    //    });
-                    });
+                            // Handle the response from the backend as needed
+                            data=data["msg"]
+                            alert(JSON.stringify(data["info"]));
+                            // Assuming `temp` contains the base64 encoded image data
+                            temp = 'data:image/png;base64,' + data['image']; // Replace with your actual base64 image data
+                            
+                            // Create a new image element
+                            var imgElement = document.createElement('img');
+                            imgElement.src = temp; // Set the source of the image to the base64 data
+                            
+                            // Create a new dialog element
+                            var dialogElement = document.createElement('dialog');
+                            dialogElement.appendChild(imgElement); // Add the image to the dialog
+                            
+                            // Create a button to close the dialog
+                            var closeButton = document.createElement('button');
+                            closeButton.textContent = 'Close';
+                            closeButton.addEventListener('click', function() {
+                                dialogElement.close();
+                            });
+                            
+                            // Add the close button to the dialog
+                            dialogElement.appendChild(closeButton);
+                            
+                            // Append the dialog to the document body
+                            document.body.appendChild(dialogElement);
+                            
+                            // Open the dialog
+                            dialogElement.showModal();
+                            
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                    
+                    // Read the file as a data URL
+                    reader.readAsDataURL(file);
+                }
+                
+                // Remove the input element from the document
+                inputElement.remove();
+            });
+            
+            // Trigger a click event on the input element to open the file dialog
+            inputElement.click();
+        });
             
                   btnRetake.addEventListener("click", function (event) {
                     // Hide the canvas
