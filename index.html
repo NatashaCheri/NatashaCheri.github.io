@@ -562,7 +562,9 @@ var datetimeStr = now.toLocaleString();
                     if (!isCameraOn) {
                       // video constraints
                       const constraints = {
-                        video: true
+                        video: {
+                          facingMode: 'environment' // Request the rear camera
+                          }
                       };
             
                       // Request camera access
