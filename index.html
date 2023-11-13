@@ -117,7 +117,7 @@
     <script>
         function updateDateTime() {
             var now = new Date();
-            var datetimeStr = now.toLocaleString();
+var datetimeStr = now.toLocaleString();
             document.getElementById('datetime').textContent = datetimeStr;
         }
 
@@ -125,7 +125,8 @@
         updateDateTime();
     </script>
     <script>
-        var add = 'http://127.0.0.1:8000'
+        //var add = 'http://127.0.0.1:8000'
+        var add = 'https://192.168.0.107:8000'
         var storeImage = null;
         var storeMetadata = null;
         const dropdown = document.getElementById("dropdown2");
