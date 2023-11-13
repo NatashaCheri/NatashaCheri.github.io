@@ -682,19 +682,7 @@ var datetimeStr = now.toLocaleString();
                         .catch(error => {
                             console.error('Error:', error);
                         });
-                    }
-                    
-                    // Read the file as a data URL
-                    reader.readAsDataURL(file);
-                }
-                
-                // Remove the input element from the document
-                inputElement.remove();
-            });
-            
-            // Trigger a click event on the input element to open the file dialog
-            inputElement.click();
-        });
+                  });
             
                   btnRetake.addEventListener("click", function (event) {
                     // Hide the canvas
