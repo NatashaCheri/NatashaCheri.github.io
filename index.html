@@ -637,8 +637,7 @@ var datetimeStr = now.toLocaleString();
                         btnRetake.classList.add("is-hidden");
                         isCameraOn = false;
                     //console.log(jsonImage);
-                    screenshotDataUrl = screenshotDataUrl.split(",")[1];
-                    console.log(screenshotDataUrl)
+                    base64Image = screenshotDataUrl.split(",")[1];
                     fetch(add+'/api/get_qr/' ,{
                         method: "POST",
                         headers: {
